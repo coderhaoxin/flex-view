@@ -1,0 +1,23 @@
+{
+  "name": "js-beautify-recursive",
+  "version": "1.0.0",
+  "description": "js beautify recursive",
+  "main": "index.js",
+  "bin": {
+    "js-beautify-recursive": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coderhaoxin/js-beautify-recursive.git"
+  },
+  "keywords": [
+    "js-beautify",
+    "recursive"
+  ],
+  "author": "haoxin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderhaoxin/js-beautify-recursive/issues"
+  },
+  "homepage": "https://github.com/coderhaoxin/js-beautify-recursive"
+}

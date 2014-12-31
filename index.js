@@ -57,10 +57,9 @@ if (result.status) {
 
 function read(dir, ignores, file) {
   file = file || '';
-
-  if (file.startsWith('.') || ignored(file)) return;
-
   dir = path.join(dir, file);
+
+  if (file.startsWith('.') || ignored(file, dir)) return;
 
   if (fs.statSync(dir).isDirectory()) {
     fs.readdirSync(dir)
@@ -74,9 +73,11 @@ function read(dir, ignores, file) {
   }
 }
 
-function ignored(file) {
+function ignored(filename, dir) {
   for (var i = 0; i < ignores.length; i++) {
-    if (file === ignores[i]) return true;
+    if (filename === ignores[i]) return true;
+    // such as: test/fixture/image
+    if (path.join(dir, filename).contains(ignores[i])) return true;
   }
 }
 

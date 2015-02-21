@@ -1,22 +1,22 @@
-#!/usr/bin/env node --harmony
+#!/usr/bin/env iojs
 
 'use strict';
 
-var cp = require('child_process'),
-  params = process.argv.slice(2),
+const cp = require('child_process'),
   path = require('path'),
-  fs = require('fs'),
-  dir = params[0];
+  fs = require('fs');
+
+let params = process.argv.slice(2),
+  dir = params[0],
+  debug = false,
+  ignores = [],
+  files = [];
 
 if (!dir) {
   console.error('null path');
   process.exit(1);
 }
 params.splice(0, 1);
-
-var ignores = [],
-  debug = false,
-  files = [];
 
 if (params.indexOf('--debug') >= 0) {
   debug = true;
@@ -44,7 +44,7 @@ log(files);
 // run cmd
 log('params pass to js-beautify is:');
 log(params);
-var result = cp.spawnSync('js-beautify', params.concat(files));
+let result = cp.spawnSync('js-beautify', params.concat(files));
 if (result.status) {
   console.error(result.stderr.toString());
 } else {
@@ -74,10 +74,10 @@ function read(dir, ignores, file) {
 }
 
 function ignored(filename, dir) {
-  for (var i = 0; i < ignores.length; i++) {
-    if (filename === ignores[i]) return true;
+  for (let i of ignores) {
+    if (filename === i) return true;
     // such as: test/fixture/image
-    if (path.join(dir, filename).contains(ignores[i])) return true;
+    if (path.join(dir, filename).includes(i)) return true;
   }
 }
 

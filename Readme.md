@@ -1,4 +1,4 @@
-### not use [js-beautify](https://github.com/beautify-web/js-beautify) any more, just use [jscs-dev/node-jscs](https://github.com/jscs-dev/node-jscs)
+### deprecated! not use [js-beautify](https://github.com/beautify-web/js-beautify) any more, just use [jscs-dev/node-jscs](https://github.com/jscs-dev/node-jscs)
 
 [![NPM version][npm-img]][npm-url]
 [![License][license-img]][license-url]
